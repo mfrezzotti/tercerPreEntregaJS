@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Reseteo incial*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*ESTILO DEL BODY*/
+
+body {
+    
+    font-family:"Monserrat", sans-serif;
+}
+
+.contenedor {
+    max-width: 1000px;
+    margin: 0;
+    padding-inline: 3rem;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    border-radius: 0.5rem;
+ }
+
+h1 {
+    font-size: 1.5rem;
+    color:yellowgreen;
+    font-weight: bold;
+    
+}
+
+h2 h3 h4 h5 h6 p {
+    font-size: 1.5rem; 
+    font-family:"Monserrat", sans-serif;
+}
+
+a {
+    text-decoration: none;
+
+}
+
+.header {
+    background-color: black;
+    padding-block: 1rem;
+}
+
+.header-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+}
+
+.bi-cart4 {
+    font-size: 2rem;
+    color: yellowgreen;
+}
+
+.carrito-numerito {
+    color: yellowgreen;
+}
+
+main section h2 {
+    margin-top: 1.5rem;
+}
+
+
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card-productos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-between;
+    gap: 0.5rem;
+   
+    
+}
+
+.btn-comprar {
+    background-color: black;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 0.5rem;
+    border: 2px yellowgreen solid;
+    padding: 0.5rem;
+    cursor: pointer;
+
+}
+
+.contenedor-productos h3 {
+    text-align: center;
+}
+
+.productos-carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.producto-carrito {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: grey;
+    color:white;
+    border-radius: 0.5rem;
+    border: 2px blue solid;
+    gap: 0.5rem;
+    padding-inline: 2rem;
+
+}
+
+.producto-carrito-imagen {
+    width: 4rem;
+    border-radius: 0.5rem;
+}
+
+.d-none {
+    display: none;
+}
+
+.footer {
+    background-color: black;
+    color:yellowgreen;
+    padding-block: 1rem;
+    margin-top: 1rem;
+   
+}
