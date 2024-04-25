@@ -1,20 +1,24 @@
-const productosEnElCarrito = JSON.parse(localStorage.getItem("productos-carrito"));
+
+let productosEnElCarrito = localStorage.getItem("productos-en-carrito");
+productosEnElCarrito = productosEnElCarrito ? JSON.parse(productosEnElCarrito) : [];
+
+
+// const productosEnElCarrito = JSON.parse(localStorage.getItem("productos-carrito")) || [];
 
 const carritoVacio = document.querySelector("#carrito-vacio");
 const productosCarrito = document.querySelector("#productos-carrito");
-const totalCarritoElement = document.querySelector("#total-carrito");
-
+const totalCarrito = document.querySelector("#total-carrito");
 
 
 function actualizarCarrito() {
-    if (!productosEnElCarrito || productosEnElCarrito.length === 0) {
-        carritoVacio.classList.remove("disabled");
-        productosCarrito.classList.add("disabled");
-
+    if (productosEnElCarrito.length ===0) {
+        carritoVacio.classList.remove("d-none");
+        productosCarrito.classList.add("d-none");
     } else {
-        carritoVacio.classList.add("disabled");
-        productosCarrito.classList.remove("disabled");
-
+        carritoVacio.classList.add("d-none");
+        productosCarrito.classList.remove("d-none");
+        
+           
         productosCarrito.innerHTML = "";
 
         productosEnElCarrito.forEach(producto => {
@@ -22,27 +26,18 @@ function actualizarCarrito() {
             div.classList.add("producto-carrito");
             div.innerHTML = `
                 <img class="producto-carrito-imagen" src="${producto.img}" alt="${producto.titulo}">
-                <div class="producto-carrito-titulo" >
-                    <h3>${producto.titulo}</h3>
-                </div>
-
-                <div class="producto-carrito-cantidad">
-                    <h3>Cantidad</h3>
-                    <p>${producto.cantidad}</p>
-                </div>
-
-                <div class="producto-carrito-precio">
-                    <h4>Precio</h4>
-                    <p>$${producto.precio}</p>
-                </div>
-                <div class="producto-carrito-subtotal">
-                    <h4>Subtotal</h4>
-                    <p>$${producto.precio * producto.cantidad}</p>
-                </div>
+                <h3>${producto.titulo}</h3>
+                <h3>Cantidad</h3>
+                <p>${producto.cantidad}</p>
+                <h4>Precio</h4>
+                <p>$${producto.precio}</p>
+                <h4>Subtotal</h4>
+                <p>$${producto.precio * producto.cantidad}</p>
+                
             `;
 
             const botonEliminar = document.createElement("button");
-            botonEliminar.classList.add("boton-eliminar-productos-carrito", "bi", "bi-x");
+            botonEliminar.classList.add("boton-eliminar-productos-carrito", "bi","bi-trash3");
             botonEliminar.addEventListener("click", () => {
                 borrarDelCarrito(producto);
             });
@@ -51,14 +46,12 @@ function actualizarCarrito() {
             productosCarrito.append(div);
         })
 
-    }
+    } 
 
     actualizarTotal();
 }
 
-
 actualizarCarrito();
-
 
 
 const borrarDelCarrito = (producto) => {
@@ -66,11 +59,13 @@ const borrarDelCarrito = (producto) => {
 
     productosEnElCarrito.splice(productoIndex, 1);
     actualizarCarrito();
+
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnElCarrito))
 }
 
 function actualizarTotal () {
-    const totalCarrito = productosEnElCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
-    totalCarritoElement.innerText = `$${totalCarrito}`;
+    const total = productosEnElCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
+    totalCarrito.innerText = `$${total}`;
 }
 
 
